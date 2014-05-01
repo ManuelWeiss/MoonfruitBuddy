@@ -1,0 +1,28 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">New User</a></li>
+    <li><a ng-href="#/existing">Existing User</a></li>
+    <li><a ng-href="#/admin">Admin</a></li>
+  </ul>
+  <h3 class="text-muted">MoonBuddy</h3>
+</div>
+
+<h1>Matching moonfruitees</h1>
+
+<div class="row marketing">
+  <p>
+    Moonfruitee buddy matching app. Fill it in, yo.
+  </p>
+  <ul>
+    <li ng-repeat="question in questions">
+      <p>{{ question.text }}</p>
+      <p class="explanation">{{ question.scaleExplain }}</p>
+      <p><input type="range" max="{{ question.scaleTo }}" min="{{ question.scaleFrom }}" value="0" ng-model="question.value" /></p>
+      <p>{{ question.value }}</p>
+    </li>
+  </ul>
+</div>
+
+<div class="footer">
+  <p><span class="glyphicon glyphicon-heart"></span> from moonfruit.</p>
+</div>
