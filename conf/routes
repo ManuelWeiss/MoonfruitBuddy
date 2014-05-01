@@ -1,10 +1,15 @@
 GET     /					controllers.Root.index
 
-GET		/questions			controllers.QuestionsAPI.getAll
-GET		/users				controllers.UsersAPI.getAll
-GET		/users/:id			controllers.UsersAPI.get(id: String)
-PUT		/users/:id			controllers.UsersAPI.update(id: String)
-POST	/users				controllers.UsersAPI.create
+GET		/questions						controllers.QuestionsAPI.getAll
+GET		/users							controllers.UsersAPI.getAll
+GET		/users/:id						controllers.UsersAPI.get(id: String)
+PUT		/users							controllers.UsersAPI.update
+POST	/users							controllers.UsersAPI.create
+GET		/users/:id/answers				controllers.UsersAPI.getAnswers(id: String)
+GET		/answers						controllers.AnswersAPI.getAll
+GET		/answers/:user_id/:question_id	controllers.AnswersAPI.get(user_id: String, question_id: String)
+PUT		/answers						controllers.AnswersAPI.update
+POST	/answers						controllers.AnswersAPI.create
 #GET		/buddies/:id		controllers.BuddiesAPI.findBuddy(id: String)
 
 # Map static resources from the /public folder to the /assets URL path

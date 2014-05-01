@@ -37,13 +37,28 @@ object Question {
     ))
   }
 
+  /**
+   * Parse a Question from a SQL ResultSet
+   */
+  val parseRS = {
+    str("questions.id") ~
+    str("questions.text") ~
+    str("questions.scale_explain") ~
+    get[Double]("questions.scale_from") ~
+    get[Double]("questions.scale_to") map {
+      case id ~ text ~ scale_explain ~ scale_from ~ scale_to =>
+      		Question(id, text, scale_explain, scale_from, scale_to)
+    }
+  }
 
-	
-	lazy val q = for (i <- 1 to 5) yield Question(
-						s"test-q$i",
-						s"Silly question No. $i",
-						"not at all - totally")
-	
-	def getAll = q
+  /**
+   * Get all questions.
+   */
+  def getAll: List[Question] = {
+    DB.withConnection {
+      implicit connection =>
+        SQL("select * from questions").as(Question.parseRS *)
+    }
+  }
 }
 
