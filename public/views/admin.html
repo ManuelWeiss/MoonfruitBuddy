@@ -13,6 +13,22 @@
   <p>
     Moonfruitee buddy matching app.
   </p>
+
+  <h2>Add a new user:</h2>
+  <p>
+    <label for="username">Username:</label>
+    <input type="text" id="username" ng-model="user.username" /> @moonfruit.com
+  </p>
+  <p>
+    <label for="department">Department:</label>
+    <input type="text" id="department" ng-model="user.department" />
+  </p>
+  <p>
+    <label for="team">Team:</label>
+    <input type="text" id="team" ng-model="user.team" />
+  </p>
+  <button ng-click="createUser()">Create User</button>
+  <p>Doing this may or may not send them an email, time permitting.</p>
 </div>
 
 <div class="footer">

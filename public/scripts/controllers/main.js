@@ -13,13 +13,15 @@ angular.module('moonBuddyApp')
       });
 
       $http.get('/users').success(function(res) {
+          $scope.existingUsers = res;
+          console.log('eu:');
           console.log(res);
       });
 
       $scope.submitAnswers = function(q, a) {
           //submit to back end;
           var data = {};
-          if (!$scope.user.username.length || !$scope.user.department.length) { 
+          if (!$scope.user.username.length /*|| !$scope.user.department.length*/) { 
               return this.invalid(); 
           }
 
@@ -53,6 +55,27 @@ angular.module('moonBuddyApp')
 
       $scope.invalid = function() {
           alert('you missed something');
+      };
+
+      $scope.createUser = function() {
+          var data = {
+              id: $scope.user.username + "@moonfruit.com",
+              name: 'Something',
+              department: $scope.user.department,
+              team: $scope.user.team
+          };
+          
+          $http({
+              url: '/users',
+              data: JSON.stringify(data),
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'}
+          }).success(function(res) {
+              console.log(res);
+          }).error(function(res) {
+              console.log(res);
+          });
+
       };
 
   });

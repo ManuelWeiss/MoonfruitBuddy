@@ -13,6 +13,20 @@
   <p>
     Something Something.
   </p>
+  <table class="user-table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Team</th>
+      <th>Department</th>
+    <tr>
+    <tr ng-repeat="user in existingUsers">
+      <td>{{ user.name }}</td>
+      <td>{{ user.id }}</td>
+      <td>{{ user.team }}</td>
+      <td>{{ user.department }}</td>
+    </tr>
+  </ul>
 </div>
 
 <div class="footer">

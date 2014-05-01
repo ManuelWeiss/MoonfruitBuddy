@@ -6,3 +6,11 @@
 .value {
     font-size: 24px;
 }
+
+.nodots {
+    list-style-type: none;
+}
+
+.user-table td {
+    width: 200px;
+}
