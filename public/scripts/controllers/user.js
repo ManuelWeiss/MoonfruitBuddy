@@ -9,6 +9,7 @@ angular.module('moonBuddyApp')
 
           if ($routeParams.user_id) {
               $scope.user = $scope.getUser($routeParams.user_id);
+              $scope.getUserAnswers($routeParams.user_id);
           } else {
               $scope.user = {
                   username: "mweiss",
@@ -27,6 +28,16 @@ angular.module('moonBuddyApp')
               }
           });
           return foundUser;
+      };
+
+      $scope.getUserAnswers = function(id) {
+          $http.get('/users/' + id + '/answers')
+              .success(function(res) {
+                  $scope.answers = res;
+              })
+              .error(function(res) {
+                  console.log(res);
+              });
       };
 
       $scope.createUser = function() {

@@ -22,9 +22,15 @@
     <tr>
     <tr>
       <td>{{ user.name }}</td>
-      <td><a href="#/user/{{ user.id }}">{{ user.id }}</a></td>
+      <td>{{ user.id }}</td>
       <td>{{ user.team }}</td>
       <td>{{ user.department }}</td>
     </tr>
   </table>
+
+  <ul>
+    <li ng-repeat="answer in answers">
+      {{ answer.question_id }} : {{ answer.answer }}
+    </li>
+  </ul>
 </div>
