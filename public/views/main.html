@@ -9,18 +9,34 @@
 
 <h1>Matching moonfruitees</h1>
 
-<div class="row marketing">
+<div class="marketing">
   <p>
     Moonfruitee buddy matching app. Fill it in, yo.
   </p>
+
+  <p>
+    <label for="username">Email: </label>
+    <input type="text" id="username" ng-model="user.username" />
+    @moonfruit.com
+  </p>
+
+  <p>
+    <label for="department">Department: </label> 
+    <input type="text" id="department" ng-model="user.department" />
+  </p>
+
   <ul>
-    <li ng-repeat="question in questions">
+    <li ng-repeat="question in questions" class="row-fluid">
       <p>{{ question.text }}</p>
       <p class="explanation">{{ question.scaleExplain }}</p>
-      <p><input type="range" max="{{ question.scaleTo }}" min="{{ question.scaleFrom }}" value="0" ng-model="question.value" /></p>
-      <p>{{ question.value }}</p>
+      <p class="half"><input type="range" max="{{ question.scaleTo }}" min="{{ question.scaleFrom }}" value="0" ng-model="question.value" ng-init="question.value=0" /></p>
+      <p class="half value">{{ question.value }}</p>
+
+      <button ng-click="submitAnswers(question.id, question.value)">Submit</button>
+
     </li>
   </ul>
+
 </div>
 
 <div class="footer">
