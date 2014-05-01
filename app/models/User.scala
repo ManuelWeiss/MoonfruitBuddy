@@ -73,6 +73,28 @@ object User {
   }
 
   /**
+   * Update an existing user.
+   *
+   * @param id The id of the user.
+   */
+  def update(user: User): Option[User] = {
+    DB.withConnection {
+      implicit connection =>
+        SQL("""
+        	update users set (name, department, team) = 
+        		( {name}, {department}, {team} ) where id = {id}
+        	"""
+        	).on(
+	          'id         -> user.id,
+	          'name       -> user.name,
+	          'department -> user.department,
+	          'team       -> user.team
+        		).executeUpdate()
+    }
+    Some(user)
+  }
+
+  /**
    * Insert a user.
    *
    * @param user The User object.

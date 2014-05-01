@@ -5,6 +5,7 @@ import play.api.Play.current
 import play.api.libs.json.Json
 import play.api.libs.json.JsResultException
 import models.User
+import models.Answer
 
 // controller answers to GET, PUT and POST requests
 // - GET: returns the item for the given id
@@ -21,7 +22,23 @@ object UsersAPI extends Controller {
     }
   }
 
-  def update(id: String) = TODO
+  def getAnswers(id: String) = Action {
+      Ok(Json.toJson(Answer.allForUser(id)))
+  }
+
+  def update = Action(parse.json) {
+    request => {
+      val user: User = request.body.as[User]  // see class User for conversion of Json
+      try {
+        User.update(user) match {
+        	case Some(u: User) => Ok(Json.toJson(u))
+        	case None => BadRequest("something went wrong")
+        }
+      } catch {
+        case e: JsResultException => BadRequest(s"invalid JSON: $e")
+      }
+    }
+  }
 
   def create = Action(parse.json) {
     request => {
