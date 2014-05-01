@@ -14,7 +14,7 @@ import models.Users
 // (see Models.scala for Item class)
 object UsersAPI extends Controller {
 
-  def get(id: Int) = Action {
+  def get(id: String) = Action {
     Users.findById(id) match {
       case Some(user: User) => Ok(Json.obj("data" -> user.data))
       case None => BadRequest("user does not exist")

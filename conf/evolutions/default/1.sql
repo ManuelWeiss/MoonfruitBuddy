@@ -1,16 +1,14 @@
-# items schema
+# users schema
 
 # --- !Ups
 
-CREATE TABLE items (
-    id varchar(255),
-    data varchar(1023) not null,
-    priority bigint not null default 0,
-    inserted SERIAL
+CREATE TABLE users (
+    id         varchar(255) unique not null,
+    name       varchar(255),
+    department varchar(255),
+    team       varchar(255)
 );
-CREATE SEQUENCE counter;
 
 # --- !Downs
 
-DROP TABLE items;
-DROP SEQUENCE counter;
+DROP TABLE users;

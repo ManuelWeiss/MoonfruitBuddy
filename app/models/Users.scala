@@ -12,7 +12,7 @@ import anorm.SqlParser._
 // User represents a user
 // which persists as a SQL table (see conf/evolutions.default/1.sql)
 case class User(
-		id:         Int,
+		id:         String,
 		name:       String,
 		department: String,
 		team:       String,
@@ -24,17 +24,17 @@ object Users {
   // (de-)serialize to/from Json
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue) = JsSuccess(User(
-      (json \ "id")         as[Int],
+      (json \ "id")         as[String],
       (json \ "name")       as[String],
       (json \ "department") as[String],
       (json \ "team")       as[String],
     ))
 
     def writes(user: User) = JsObject(Seq(
-      "id"         -> JsNumber(user.id),
-      "name"       -> JsString(user.data),
-      "department" -> JsString(user.data),
-      "team"       -> JsString(user.data),
+      "id"         -> JsString(user.id),
+      "name"       -> JsString(user.name),
+      "department" -> JsString(user.department),
+      "team"       -> JsString(user.team),
     ))
   }
 
@@ -45,74 +45,51 @@ object Users {
     str("users.id") ~
     str("users.data") ~
     get[Long]("users.priority") map {
-      case id ~ data ~ priority => Item(id, data, priority)
+      case id ~ name ~ department ~ team => User(id, name, department, team)
     }
   }
 
   /**
    * Get all items. For debugging.
    */
-  def getAll: List[Item] = {
+  def getAll: List[User] = {
     DB.withConnection {
       implicit connection =>
-        SQL("select * from users").as(Item.parseRS *)
+        SQL("select * from users").as(User.parseRS *)
     }
   }
 
   /**
-   * Retrieve an Item by id.
+   * Retrieve a user by id.
    *
-   * @param id The id of an Item.
+   * @param id The id of the user.
    */
-  def findById(id: String): Option[Item] = {
+  def findById(id: String): Option[User] = {
     DB.withConnection {
       implicit connection =>
-        SQL("select * from users where id = {id}").on('id -> id).as(Item.parseRS.singleOpt)
+        SQL("select * from users where id = {id}").on('id -> id).as(User.parseRS.singleOpt)
     }
   }
 
   /**
-   * Retrieve and delete Item with highest priority.
-   */
-  def pop: Option[Item] = {
-    DB.withTransaction {
-      implicit connection =>
-        val row = SQL(
-          """
-        	select * from users
-        	order by priority desc, inserted asc
-        	limit 1
-          """
-        ).as(Item.parseRS.singleOpt)
-        // now delete the row
-        row match {
-          case Some(i: Item) => {
-            SQL("delete from users where id = {id}").on('id -> i.id).executeUpdate()
-            row
-          }
-          case None => None
-        }
-    }
-  }
-
-  /**
-   * Insert an item.
+   * Insert a user.
    *
-   * @param item The Item object.
+   * @param user The User object.
    */
-  def insert(item: Item) = {
+  def insert(user: User) = {
     DB.withConnection {
       implicit connection =>
         SQL(
           """
           insert into users
-          (id, data, priority)
-          values ( {id}, {data}, {priority} )
+          (id, name, department, team)
+          values ( {id}, {name}, {department}, {team} )
           """
         ).on(
-          'id -> item.id,
-          'data -> item.data,
-          'priority -> item.priority
+          'id         -> user.id,
+          'name       -> user.name,
+          'department -> user.department,
+          'team       -> user.team
         ).executeUpdate()
     }
   }
