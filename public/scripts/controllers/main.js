@@ -60,7 +60,7 @@ angular.module('moonBuddyApp')
       $scope.createUser = function() {
           var data = {
               id: $scope.user.username + "@moonfruit.com",
-              name: 'Something',
+              name: $scope.user.name,
               department: $scope.user.department,
               team: $scope.user.team
           };
