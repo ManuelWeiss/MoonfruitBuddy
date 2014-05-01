@@ -3,13 +3,17 @@
 angular.module('moonBuddyApp')
   .controller('MainCtrl', function ($scope, $http) {
       $scope.user = {
-          username: "",
-          department: ""
+          username: "mweiss",
+          department: "a"
       };
 
       $http.get('/questions').success(function(res) {
           console.log(res);
           $scope.questions = res;
+      });
+
+      $http.get('/users').success(function(res) {
+          console.log(res);
       });
 
       $scope.submitAnswers = function(q, a) {
@@ -25,14 +29,19 @@ angular.module('moonBuddyApp')
           });
 
           data.user_id = $scope.user.username + "@moonfruit.com";
-          data.department = $scope.user.department;
+//          data.department = $scope.user.department;
           data.question_id = q;
-          data.answer = a;
+          data.answer = (+a);
           
           console.log('This is what i\'m about to post to /answers : ');
-          console.log(data);
+          console.log(JSON.stringify(data));
 
-          $http.post('/answers').success(function(res) {
+          $http({
+              url: '/answers',
+              data: JSON.stringify(data),
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'}
+          }).success(function(res) {
               console.log(res);
           }).error(function(res) {
               console.log(res);
