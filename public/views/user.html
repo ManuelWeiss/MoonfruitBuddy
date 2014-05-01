@@ -1,16 +1,18 @@
 <div class="header">
   <ul class="nav nav-pills pull-right">
     <li><a ng-href="#">New User</a></li>
-    <li class="active"><a ng-href="#/existing">Existing User</a></li>
+    <li><a ng-href="#/existing">Existing User</a></li>
     <li><a ng-href="#/admin">Admin</a></li>
   </ul>
   <h3 class="text-muted">MoonBuddy</h3>
 </div>
 
+<h1>Matching moonfruitees</h1>
+
 <div class="row marketing">
-  <h2>
-    Users
-  </h2>
+  <p>
+    This is a user:
+  </p>
   <table class="user-table">
     <tr>
       <th>Name</th>
@@ -18,7 +20,7 @@
       <th>Team</th>
       <th>Department</th>
     <tr>
-    <tr ng-repeat="user in existingUsers">
+    <tr>
       <td>{{ user.name }}</td>
       <td><a href="#/user/{{ user.id }}">{{ user.id }}</a></td>
       <td>{{ user.team }}</td>

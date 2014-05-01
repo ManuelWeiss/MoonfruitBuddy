@@ -14,11 +14,15 @@ angular
       })
       .when('/existing', {
         templateUrl: 'assets/views/existing.html',
-        controller: 'MainCtrl'
+        controller: 'UserCtrl'
       })
       .when('/admin', {
         templateUrl: 'assets/views/admin.html',
-        controller: 'MainCtrl'
+        controller: 'UserCtrl'
+      })
+      .when('/user/:user_id', {
+        templateUrl: 'assets/views/user.html',
+        controller: 'UserCtrl'
       })
       .otherwise({
         redirectTo: '/'

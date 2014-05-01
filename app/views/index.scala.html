@@ -50,7 +50,14 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container">
+
+      <div ng-view=""> <!-- REALLY IMPORTANT --> </div>
+
+      <div class="footer">
+        <p><span class="glyphicon glyphicon-heart"></span> from moonfruit.</p>
+      </div>
+    </div>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -82,6 +89,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="@routes.Assets.at("scripts/app.js")"></script>
         <script src="@routes.Assets.at("scripts/controllers/main.js")"></script>
+        <script src="@routes.Assets.at("scripts/controllers/user.js")"></script>
         <!-- endbuild -->
 </body>
 </html>
