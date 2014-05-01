@@ -10,7 +10,7 @@ CREATE TABLE questions (
 	scale_to      double DEFAULT 10.0
 );
 
-INSERT INTO questions (id, text, scale_explain) VALUES ('test-q1', 'Silly question No. 1', 'not at all - totally');
+INSERT INTO questions (id, text, scale_explain, scale_from, scale_to) VALUES ('test-q1', 'Where would you like to live?', 'From under the sea to the edge of space', 0, 7);
 INSERT INTO questions (id, text, scale_explain) VALUES ('test-q2', 'Silly question No. 2', 'not at all - totally');
 INSERT INTO questions (id, text, scale_explain) VALUES ('test-q3', 'Silly question No. 3', 'not at all - totally');
 INSERT INTO questions (id, text, scale_explain) VALUES ('test-q4', 'Silly question No. 4', 'not at all - totally');
