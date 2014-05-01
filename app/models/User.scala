@@ -15,26 +15,26 @@ case class User(
 		id:         String,
 		name:       String,
 		department: String,
-		team:       String,
+		team:       String //,
 //		answers:    Answers
 		)
 
-object Users {
+object User {
 
   // (de-)serialize to/from Json
   implicit object UserFormat extends Format[User] {
     def reads(json: JsValue) = JsSuccess(User(
-      (json \ "id")         as[String],
-      (json \ "name")       as[String],
-      (json \ "department") as[String],
-      (json \ "team")       as[String],
+      (json \ "id").as[String],
+      (json \ "name").as[String],
+      (json \ "department").as[String],
+      (json \ "team").as[String]
     ))
 
     def writes(user: User) = JsObject(Seq(
       "id"         -> JsString(user.id),
       "name"       -> JsString(user.name),
       "department" -> JsString(user.department),
-      "team"       -> JsString(user.team),
+      "team"       -> JsString(user.team)
     ))
   }
 
@@ -43,8 +43,9 @@ object Users {
    */
   val parseRS = {
     str("users.id") ~
-    str("users.data") ~
-    get[Long]("users.priority") map {
+    str("users.name") ~
+    str("users.department") ~
+    str("users.team") map {
       case id ~ name ~ department ~ team => User(id, name, department, team)
     }
   }

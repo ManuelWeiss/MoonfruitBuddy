@@ -4,7 +4,7 @@ import play.api.mvc._
 import play.api.Play.current
 import play.api.libs.json.Json
 import play.api.libs.json.JsResultException
-import models.Users
+import models.User
 
 // controller answers to GET, PUT and POST requests
 // - GET: returns the item for the given id
@@ -15,20 +15,20 @@ import models.Users
 object UsersAPI extends Controller {
 
   def get(id: String) = Action {
-    Users.findById(id) match {
-      case Some(user: User) => Ok(Json.obj("data" -> user.data))
+    User.findById(id) match {
+      case Some(user: User) => Ok(Json.toJson(user))
       case None => BadRequest("user does not exist")
     }
   }
 
-  def update = TODO
+  def update(id: String) = TODO
 
   def create = Action(parse.json) {
     request => {
       val json = request.body
       try {
         // insert into db
-        Users.insert(json.as[User])  // see class User for conversion of Json
+        User.insert(json.as[User])  // see class User for conversion of Json
         Ok("")
       } catch {
         case e: JsResultException => BadRequest(s"invalid JSON: $e")
@@ -37,8 +37,8 @@ object UsersAPI extends Controller {
   }
 
   // for debugging - returns all users
-  def list = Action {
-    Ok(Json.toJson(Users.getAll))
+  def getAll = Action {
+    Ok(Json.toJson(User.getAll))
   }
 
 }

@@ -1,8 +1,9 @@
 GET     /					controllers.Root.index
 
 GET		/questions			controllers.QuestionsAPI.getAll
+GET		/users				controllers.UsersAPI.getAll
 GET		/users/:id			controllers.UsersAPI.get(id: String)
-PUT		/users/:id			controllers.UsersAPI.update
+PUT		/users/:id			controllers.UsersAPI.update(id: String)
 POST	/users				controllers.UsersAPI.create
 #GET		/buddies/:id		controllers.BuddiesAPI.findBuddy(id: String)
 
