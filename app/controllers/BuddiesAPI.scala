@@ -4,9 +4,12 @@ import play.api.mvc._
 import play.api.Play.current
 import play.api.libs.json.Json
 import play.api.libs.json.JsResultException
+import models.User
 
-object Root extends Controller {
+object BuddiesAPI extends Controller {
 
-  def index = Action { Ok(views.html.index("Moonfruit Buddy")) }
+  def findBuddy(id: String) = Action {
+    Ok(Json.toJson(User.findBuddy(id)))
+  }
 
 }

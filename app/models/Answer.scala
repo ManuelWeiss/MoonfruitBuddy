@@ -87,6 +87,28 @@ object Answer {
   }
 
   /**
+   * Update or insert an existing answer.
+   *
+   * @param answer The answer object.
+   */
+  def updateOrInsert(answer: Answer): Option[Answer] = {
+    DB.withConnection {
+      implicit connection =>
+        SQL("""
+	          merge into answers
+	          (user_id, question_id, answer)
+	          values ( {user_id}, {question_id}, {answer} )
+        	"""
+        	).on(
+        	  'user_id     -> answer.user_id,
+        	  'question_id -> answer.question_id,
+	          'answer      -> answer.answer
+        		).executeUpdate()
+    }
+    Some(answer)
+  }
+
+  /**
    * Update an existing answer.
    *
    * @param answer The answer object.

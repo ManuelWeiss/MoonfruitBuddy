@@ -73,6 +73,15 @@ object User {
   }
 
   /**
+   * Find buddies for a given user
+   *
+   * @param id The id of the user.
+   */
+  def findBuddy(id: String): List[User] = {
+		  Nil
+  }
+
+  /**
    * Update an existing user.
    *
    * @param id The id of the user.

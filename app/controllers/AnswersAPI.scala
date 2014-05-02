@@ -15,6 +15,20 @@ object AnswersAPI extends Controller {
     }
   }
 
+  def updateOrInsert = Action(parse.json) {
+    request => {
+      val answer: Answer = request.body.as[Answer]  // see class Answer for conversion of Json
+      try {
+        Answer.updateOrInsert(answer) match {
+        	case Some(u: Answer) => Ok(Json.toJson(u))
+        	case None => BadRequest("something went wrong")
+        }
+      } catch {
+        case e: JsResultException => BadRequest(s"invalid JSON: $e")
+      }
+    }
+  }
+
   def update = Action(parse.json) {
     request => {
       val answer: Answer = request.body.as[Answer]  // see class Answer for conversion of Json
