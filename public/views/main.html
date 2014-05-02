@@ -29,19 +29,23 @@
     <li ng-repeat="question in questions" class="row-fluid nodots">
       <h3>{{ question.text }}</h3>
 
-      <p class="explanation">{{ question.scaleExplain }}</p>
+      <p class="image {{ question.id }} ans{{ ('' + question.value).substr(0,1) }}">
+        <img src="/assets/images/{{ question.id }}.png" />
+      </p>
 
-      <p class="half">
+      <p class="rangeslider">
         <input type="range" max="{{ question.scaleTo }}" min="{{ question.scaleFrom }}" 
                value="0" ng-model="question.value" ng-init="question.value=0" step="0.1" />
       </p>
 
-      <p class="value">{{ question.value }}</p>
+      <p class="explanation">{{ question.scaleExplain }}</p>
 
-      <p class="image {{ question.id }} ans{{ ('' + question.value).substr(0,1) }}"></p>
+<!--      <p class="value">{{ question.value }}</p> -->
 
       <button class="submit" 
               ng-click="submitAnswers(question.id, question.value)">Submit</button>
+
+      <div class="bottom-border"><!-- empty --></div>
 
     </li>
   </ul>
