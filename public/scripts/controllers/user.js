@@ -62,11 +62,10 @@ angular.module('moonBuddyApp')
       };
 
       $scope.findMatch = function(id) {
-          return console.log(id);
-          $http.get('/match', id).success(function(res) {
-              
+          $http.get('/buddies/:' + id).success(function(res) {
+              $scope.matchingUsers = res;
           }).error(function(res) {
-
+              alert('something went wrong :(');
           });
       };
 

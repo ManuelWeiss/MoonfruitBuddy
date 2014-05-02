@@ -53,12 +53,12 @@
         <th>Department</th>
         <th>Score</th>
       <tr>
-      <tr ng-repeat="user in matchedUsers">
-        <td>{{ user.name }}</td>
-        <td>{{ user.id }}</td>
-        <td>{{ user.team }}</td>
-        <td>{{ user.department }}</td>
-        <td>{{ user.score }}</td>
+      <tr ng-repeat="match in matchingUsers | orderBy:'distance':true">
+        <td>{{ match.user.name }}</td>
+        <td>{{ match.user.id }}</td>
+        <td>{{ match.user.team }}</td>
+        <td>{{ match.user.department }}</td>
+        <td>{{ match.distance }}</td>
       </tr>
     </table>
   </p>

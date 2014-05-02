@@ -10,12 +10,11 @@ angular.module('moonBuddyApp')
       $scope.submitAnswers = function(q, a) {
           //submit to back end;
           var data = {};
-          if (!$scope.user.username.length /*|| !$scope.user.department.length*/) { 
+          if (!$scope.user.username.length) { 
               return this.invalid(); 
           }
 
           data.user_id = $scope.user.username + "@moonfruit.com";
-//          data.department = $scope.user.department;
           data.question_id = q;
           data.answer = (+a);
           
