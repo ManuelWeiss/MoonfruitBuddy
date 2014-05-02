@@ -2,20 +2,9 @@
 
 angular.module('moonBuddyApp')
   .controller('MainCtrl', function ($scope, $http) {
-      $scope.user = {
-          username: "mweiss",
-          department: "a"
-      };
-
       $http.get('/questions').success(function(res) {
           console.log(res);
           $scope.questions = res;
-      });
-
-      $http.get('/users').success(function(res) {
-          $scope.existingUsers = res;
-          console.log('eu:');
-          console.log(res);
       });
 
       $scope.submitAnswers = function(q, a) {

@@ -20,10 +20,12 @@ INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q4', 'Are you a morning person?', 'From jumping out of bed to going back to sleep');
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q5', 'How do you feel about the colour blue?', 'Blue to not blue - (Da Ba Dee Da Ba Die)');
---INSERT INTO questions (id, text, scale_explain)
---		VALUES ('test-q6', 'Silly question No. 6', 'not at all - totally');
---INSERT INTO questions (id, text, scale_explain)
---		VALUES ('test-q7', 'Silly question No. 7', 'not at all - totally');
+INSERT INTO questions (id, text, scale_explain)
+		VALUES ('test-q6', 'Silly question No. 6', 'not at all - totally');
+INSERT INTO questions (id, text, scale_explain)
+		VALUES ('test-q7', 'Silly question No. 7', 'not at all - totally');
+INSERT INTO questions (id, text, scale_explain)
+		VALUES ('test-q8', 'Silly question No. 7', 'Love it or hate it!');
 
 CREATE TABLE answers (
     user_id     varchar(255) REFERENCES users (id),
@@ -42,10 +44,10 @@ INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test1@moonfruit.com', 'test-q4', 10.0);
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test1@moonfruit.com', 'test-q5', 6.66);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test1@moonfruit.com', 'test-q6', 0.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test1@moonfruit.com', 'test-q7', 5.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test1@moonfruit.com', 'test-q6', 0.0);
+INSERT INTO answers (user_id, question_id, answer)
+ 		VALUES ('test1@moonfruit.com', 'test-q7', 5.0);
 
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test2@moonfruit.com', 'test-q1', 1.2);
@@ -57,10 +59,10 @@ INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test2@moonfruit.com', 'test-q4', 10.0);
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test2@moonfruit.com', 'test-q5', 7.01);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test2@moonfruit.com', 'test-q6', 0.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test2@moonfruit.com', 'test-q7', 5.0);
+INSERT INTO answers (user_id, question_id, answer)
+ 		VALUES ('test2@moonfruit.com', 'test-q6', 0.0);
+INSERT INTO answers (user_id, question_id, answer)
+ 		VALUES ('test2@moonfruit.com', 'test-q7', 5.0);
 
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test3@moonfruit.com', 'test-q1', 5.0);
@@ -72,10 +74,10 @@ INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test3@moonfruit.com', 'test-q4', 3.2);
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test3@moonfruit.com', 'test-q5', 9.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test3@moonfruit.com', 'test-q6', 10.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test3@moonfruit.com', 'test-q7', 7.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test3@moonfruit.com', 'test-q6', 10.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test3@moonfruit.com', 'test-q7', 7.0);
 
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test4@moonfruit.com', 'test-q1', 5.1);
@@ -87,10 +89,10 @@ INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test4@moonfruit.com', 'test-q4', 2.9);
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test4@moonfruit.com', 'test-q5', 8.2);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test4@moonfruit.com', 'test-q6', 10.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test4@moonfruit.com', 'test-q7', 4.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test4@moonfruit.com', 'test-q6', 10.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test4@moonfruit.com', 'test-q7', 4.0);
 
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test5@moonfruit.com', 'test-q1', 5.4);
@@ -102,10 +104,10 @@ INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test5@moonfruit.com', 'test-q4', 2.5);
 INSERT INTO answers (user_id, question_id, answer)
 		VALUES ('test5@moonfruit.com', 'test-q5', 8.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test5@moonfruit.com', 'test-q6', 11.0);
--- INSERT INTO answers (user_id, question_id, answer)
--- 		VALUES ('test5@moonfruit.com', 'test-q7', 5.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test5@moonfruit.com', 'test-q6', 11.0);
+INSERT INTO answers (user_id, question_id, answer)
+		VALUES ('test5@moonfruit.com', 'test-q7', 5.0);
 
 # --- !Downs
 

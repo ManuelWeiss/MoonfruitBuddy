@@ -31,7 +31,7 @@
       <h3>{{ question.text }}</h3>
 
       <p class="image {{ question.id }} ans{{ ('' + question.value).substr(0,1) }}">
-        <img src="/assets/images/{{ question.id }}.png" />
+        <img src="/assets/images/{{ question.id }}.png" ng-cloak />
       </p>
 
       <p class="rangeslider">
