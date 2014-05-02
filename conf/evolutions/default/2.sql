@@ -15,7 +15,7 @@ INSERT INTO questions (id, text, scale_explain, scale_from, scale_to)
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q2', 'How do you like your weather?', 'Thunderstorms to tropical heatwave!');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q3', 'WIP', 'Not sure');
+		VALUES ('test-q3', 'What''s playing when you crank it up to 11?', 'Classical to classic rock. \m/');
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q4', 'Are you a morning person?', 'From jumping out of bed to going back to sleep');
 INSERT INTO questions (id, text, scale_explain)
