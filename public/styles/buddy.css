@@ -3,6 +3,13 @@
     width: 49%;
 }
 
+.logo {
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 10px;
+}
+
 .value {
     display: inline-block;
     font-size: 24px;

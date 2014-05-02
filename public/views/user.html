@@ -4,15 +4,15 @@
     <li><a ng-href="#/existing">Existing User</a></li>
     <li><a ng-href="#/admin">Admin</a></li>
   </ul>
+  <img src="/assets/images/moonfruit_logo.png" class="logo" />
   <h3 class="text-muted">MoonBuddy</h3>
 </div>
 
 <h1>Matching moonfruitees</h1>
 
 <div class="row marketing">
-  <p>
-    This is a user:
-  </p>
+  <h2>User</h2>
+
   <table class="user-table">
     <tr>
       <th>Name</th>
@@ -28,9 +28,16 @@
     </tr>
   </table>
 
-  <ul>
-    <li ng-repeat="answer in answers">
-      {{ answer.question_id }} : {{ answer.answer }}
-    </li>
-  </ul>
+  <h2>Answers</h2>
+
+  <table class="user-table">
+    <tr>
+      <th>Question</th>
+      <th>Answer</th>
+    </tr>
+    <tr ng-repeat="answer in answers">
+      <td>{{ answer.question_id }}</td>
+      <td>{{ answer.answer }}</td>
+    </tr>
+  </table>
 </div>
