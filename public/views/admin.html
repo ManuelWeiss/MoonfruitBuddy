@@ -44,6 +44,8 @@
     <button ng-click="findMatch(selectedUser)">Find a match!</button>
   </p>
 
+  <p>Remember, lower is better!</p>
+
   <p>
     <table class="user-table">
       <tr>
@@ -53,12 +55,12 @@
         <th>Department</th>
         <th>Score</th>
       <tr>
-      <tr ng-repeat="match in matchingUsers | orderBy:'distance':true">
+      <tr ng-repeat="match in matchingUsers | orderBy:'distance'">
         <td>{{ match.user.name }}</td>
         <td>{{ match.user.id }}</td>
         <td>{{ match.user.team }}</td>
         <td>{{ match.user.department }}</td>
-        <td>{{ match.distance }}</td>
+        <td>{{ match.distance.toFixed(2) }}</td>
       </tr>
     </table>
   </p>

@@ -12,6 +12,10 @@ angular
         templateUrl: 'assets/views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/user/:user_id/answers', {
+        templateUrl: 'assets/views/main.html',
+        controller: 'MainCtrl'
+      })
       .when('/existing', {
         templateUrl: 'assets/views/existing.html',
         controller: 'UserCtrl'

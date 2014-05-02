@@ -1,11 +1,31 @@
 'use strict';
 
 angular.module('moonBuddyApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, $routeParams) {
       $http.get('/questions').success(function(res) {
           console.log(res);
           $scope.questions = res;
       });
+
+      $scope.updateQuestions = function(ans) {
+          
+      };
+
+      $scope.getUserAnswers = function(id) {
+          $http.get('/users/' + id + '/answers')
+              .success(function(res) {
+                  $scope.answers = res;
+                  $scope.updateQuestions($scope.answers);
+              })
+              .error(function(res) {
+                  console.log(res);
+              });
+      };
+
+      if ($routeParams.user_id) {
+          //go get the user data!
+          $scope.getUserAnswers($routeParams.user_id);
+      }
 
       $scope.submitAnswers = function(q, a) {
           //submit to back end;
