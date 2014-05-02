@@ -38,42 +38,6 @@ input[type="range"]{
     background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #fefefe), color-stop(0.49, #dddddd), color-stop(0.51, #d1d1d1), color-stop(1, #a1a1a1) );
 }
 
-.image.test-q1 {
-    background: url('/assets/images/live.png');
-}
-
-.image.test-q1.ans0 {
-    background-position: 0 0;
-}
-
-.image.test-q1.ans1 {
-    background-position: -138px 0;
-}
-
-.image.test-q1.ans2 {
-    background-position: -277px 0;
-}
-
-.image.test-q1.ans3 {
-    background-position: -416px 0;
-}
-
-.image.test-q1.ans4 {
-    background-position: -555px 0;
-}
-
-.image.test-q1.ans5 {
-    background-position: -693px 0;
-}
-
-.image.test-q1.ans6 {
-    background-position: -832px 0;
-}
-
-.image.test-q1.ans7 {
-    background-position: -971px 0;
-}
-
 .nodots {
     list-style-type: none;
 }
