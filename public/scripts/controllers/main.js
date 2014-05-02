@@ -5,10 +5,28 @@ angular.module('moonBuddyApp')
       $http.get('/questions').success(function(res) {
           console.log(res);
           $scope.questions = res;
+
+
+
+          if ($routeParams.user_id) {
+              //go get the user data!
+              $scope.getUserAnswers($routeParams.user_id);
+              $scope.user = {};
+              $scope.user.username = $routeParams.user_id.substr(0, 
+                                                    $routeParams.user_id.indexOf('@'));
+          }
       });
 
+      //update questions with users previous answers
       $scope.updateQuestions = function(ans) {
-          
+          angular.forEach(ans, function(a, v) {
+              angular.forEach($scope.questions, function(key, val) {
+                  if (key.id === a.question_id) {
+                      key.value = a.answer;
+                  }
+              });
+          });
+              
       };
 
       $scope.getUserAnswers = function(id) {
@@ -21,11 +39,6 @@ angular.module('moonBuddyApp')
                   console.log(res);
               });
       };
-
-      if ($routeParams.user_id) {
-          //go get the user data!
-          $scope.getUserAnswers($routeParams.user_id);
-      }
 
       $scope.submitAnswers = function(q, a) {
           //submit to back end;
