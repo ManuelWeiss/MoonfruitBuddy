@@ -29,5 +29,38 @@
     <input type="text" id="team" ng-model="user.team" />
   </p>
   <button ng-click="createUser()">Create User</button>
+  
   <p>Doing this may or may not send them an email, time permitting.</p>
+
+  <hr>
+
+  <h2>Match up a user!</h2>
+
+  <p>
+    <select ng-model="selectedUser">
+      <option ng-repeat="user in existingUsers" value="{{ user.id }}">{{
+        user.name }}</option>
+    </select>
+    <button ng-click="findMatch(selectedUser)">Find a match!</button>
+  </p>
+
+  <p>
+    <table class="user-table">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Team</th>
+        <th>Department</th>
+        <th>Score</th>
+      <tr>
+      <tr ng-repeat="user in matchedUsers">
+        <td>{{ user.name }}</td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.team }}</td>
+        <td>{{ user.department }}</td>
+        <td>{{ user.score }}</td>
+      </tr>
+    </table>
+  </p>
+  
 </div>

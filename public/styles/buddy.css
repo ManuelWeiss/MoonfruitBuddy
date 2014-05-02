@@ -63,7 +63,7 @@ input[type="range"]{
     list-style-type: none;
 }
 
-.user-table td {
+.user-table th {
     width: 200px;
 }
 

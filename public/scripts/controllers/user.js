@@ -61,4 +61,13 @@ angular.module('moonBuddyApp')
 
       };
 
+      $scope.findMatch = function(id) {
+          return console.log(id);
+          $http.get('/match', id).success(function(res) {
+              
+          }).error(function(res) {
+
+          });
+      };
+
   });
