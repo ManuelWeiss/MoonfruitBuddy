@@ -34,7 +34,7 @@ object Answer {
   /**
    * Parse an Answer from a SQL ResultSet
    */
-  val parseRS = {
+  val parseAnswerRS = {
     str("answers.user_id") ~
     str("answers.question_id") ~
     get[Double]("answers.answer") map {
@@ -44,13 +44,24 @@ object Answer {
   }
 
   /**
-   * Get all Answers.
+   * Get all Answers as a List.
    */
   def getAll: List[Answer] = {
     DB.withConnection {
       implicit connection =>
-        SQL("select * from answers").as(Answer.parseRS *)
+        SQL("select * from answers").as(parseAnswerRS *)
     }
+  }
+  
+  // question_id -> List(answer values)
+  type AnswersForUser = Map[String, List[Double]] 
+		
+  /**
+   * Get all Answers as a Map keyed by user_id.
+   */
+  def getMapByUser = {
+    val answers = Map() ++ getAll.map{case Answer(u, q, a) => (u, (q, a))}
+    answers
   }
 
   /**
@@ -61,7 +72,7 @@ object Answer {
       implicit connection =>
         SQL("select * from answers where user_id = {user_id}").on(
         	  'user_id     -> user_id
-        	  ).as(Answer.parseRS *)
+        	  ).as(parseAnswerRS *)
     }
   }
 
@@ -82,7 +93,7 @@ object Answer {
         	).on(
         	  'user_id     -> user_id,
         	  'question_id -> question_id
-        	  ).as(Answer.parseRS.singleOpt)
+        	  ).as(parseAnswerRS.singleOpt)
     }
   }
 

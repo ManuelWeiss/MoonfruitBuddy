@@ -7,7 +7,7 @@ import play.api.libs.json._
 import anorm._
 import anorm.SqlParser._
 
-// type Answers = Map[String, (Double, Double)]
+import models.Answer
 
 // User represents a user
 // which persists as a SQL table (see conf/evolutions.default/1.sql)
@@ -77,8 +77,9 @@ object User {
    *
    * @param id The id of the user.
    */
-  def findBuddy(id: String): List[User] = {
-		  Nil
+  def findBuddy(id: String) = {
+	  val answers = Answer.getMapByUser
+	  answers.mkString("\n")
   }
 
   /**
