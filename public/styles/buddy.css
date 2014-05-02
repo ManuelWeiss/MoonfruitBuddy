@@ -6,6 +6,7 @@
 .value {
     display: inline-block;
     font-size: 24px;
+    width: 40px;
 }
 
 .image {

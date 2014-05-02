@@ -29,9 +29,12 @@
     <li ng-repeat="question in questions" class="row-fluid">
       <p>{{ question.text }}</p>
       <p class="explanation">{{ question.scaleExplain }}</p>
-      <p class="half"><input type="range" max="{{ question.scaleTo }}" min="{{ question.scaleFrom }}" value="0" ng-model="question.value" ng-init="question.value=0" /></p>
+      <p class="half">
+        <input type="range" max="{{ question.scaleTo }}" min="{{ question.scaleFrom }}" 
+               value="0" ng-model="question.value" ng-init="question.value=0" step="0.1" />
+      </p>
       <p class="value">{{ question.value }}</p>
-      <p class="image {{ question.id }} ans{{ question.value }}"></p>
+      <p class="image {{ question.id }} ans{{ ('' + question.value).substr(0,1) }}"></p>
 
       <button ng-click="submitAnswers(question.id, question.value)">Submit</button>
 
