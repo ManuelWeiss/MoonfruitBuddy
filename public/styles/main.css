@@ -894,7 +894,7 @@ textarea {
   line-height: inherit; }
 
 a {
-  color: #428bca;
+  color: #00b196;
   text-decoration: none; }
   a:hover, a:focus {
     color: #2a6496;
@@ -3242,7 +3242,7 @@ tbody.collapse.in {
     margin-left: 2px; }
   .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
     color: white;
-    background-color: #428bca; }
+    background-color: #00b196; }
 
 .nav-stacked > li {
   float: none; }
