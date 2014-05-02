@@ -14,3 +14,6 @@ dist
 /RUNNING_PID
 /.settings
 .DS_Store
+/MFbuddy.db.h2.db
+/MFbuddy.db.lock.db
+/MFbuddy.db.trace.db
