@@ -29,7 +29,7 @@ CREATE TABLE answers (
     user_id     varchar(255) REFERENCES users (id),
     question_id varchar(31) REFERENCES questions (id),
     answer      double,
-    UNIQUE      (user_id, question_id)
+    PRIMARY KEY (user_id, question_id)
 );
 
 INSERT INTO answers (user_id, question_id, answer)

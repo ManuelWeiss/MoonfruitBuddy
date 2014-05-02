@@ -3,7 +3,7 @@
 # --- !Ups
 
 CREATE TABLE users (
-    id         varchar(255) unique not null,
+    id         varchar(255) PRIMARY KEY,
     name       varchar(255),
     department varchar(255),
     team       varchar(255)
