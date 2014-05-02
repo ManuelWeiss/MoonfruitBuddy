@@ -14,6 +14,8 @@
     height: 130px;
     display: inline-block;
     vertical-align: middle;
+    border-radius: 7px;
+/*    box-shadow: 1px 1px 7px grey; */
 }
 
 .image.test-q1 {
@@ -58,4 +60,16 @@
 
 .user-table td {
     width: 200px;
+}
+
+.push-down {
+    margin-top: 40px;
+}
+
+.no-pad-left {
+    padding-left: 0;
+}
+
+.submit {
+    margin-left: 20px;
 }
