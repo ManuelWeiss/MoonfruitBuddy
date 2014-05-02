@@ -19,7 +19,7 @@ INSERT INTO questions (id, text, scale_explain)
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q4', 'Are you a morning person?', 'From jumping out of bed to going back to sleep');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q5', 'How do you feel about the colour blue?', 'Blue to not blue');
+		VALUES ('test-q5', 'How do you feel about the colour blue?', 'Blue to not blue - (Da Ba Dee Da Ba Die)');
 --INSERT INTO questions (id, text, scale_explain)
 --		VALUES ('test-q6', 'Silly question No. 6', 'not at all - totally');
 --INSERT INTO questions (id, text, scale_explain)
