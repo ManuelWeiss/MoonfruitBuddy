@@ -10,24 +10,26 @@ CREATE TABLE questions (
 	scale_to      double DEFAULT 10.0
 );
 
-INSERT INTO questions (id, text, scale_explain, scale_from, scale_to)
-		VALUES ('test-q1', 'Where would you like to live?', 'From under the sea to the edge of space', 0, 7);
+INSERT INTO questions (id, text, scale_explain)
+		VALUES ('test-q1', 'Are you a morning person?', 'From jumping out of bed to going back to sleep');
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q2', 'How do you like your weather?', 'Thunderstorms to tropical heatwave!');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q3', 'What''s playing when you crank it up to 11?', 'Classical to classic rock. \m/');
-INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q4', 'Are you a morning person?', 'From jumping out of bed to going back to sleep');
+		VALUES ('test-q3', 'Which do you prefer?', 'Carrots, beef, or somewhere inbetween');
+INSERT INTO questions (id, text, scale_explain, scale_from, scale_to)
+		VALUES ('test-q4', 'Where would you like to live?', 'From under the sea to the edge of space', 0, 7);
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q5', 'How do you feel about the colour blue?', 'Blue to not blue - (Da Ba Dee Da Ba Die)');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q6', 'Which do you prefer?', 'Carrots, beef, or somewhere inbetween');
+		VALUES ('test-q6', 'How do you feel about chocolate?', 'Love it or hate it!');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q7', 'Silly question No. 7', 'not at all - totally');
+		VALUES ('test-q7', 'Which family photo do you want to join?', 'Fake tan to kitty fan.');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q8', 'How do you feel about chocolate?', 'Love it or hate it!');
+		VALUES ('test-q8', 'Fashion is something so ugly it has to change every 15 minutes?', 'No way, super Chic! to Hells yeah, super freak!');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q9', 'Fashion is something so ugly it has to change every 15 minutes?', 'No way, super Chic! to Hells yeah, super freak!');
+		VALUES ('test-q9', 'What''s playing when you crank it up to 11?', 'Classical to classic rock. \m/');
+INSERT INTO questions (id, text, scale_explain)
+		VALUES ('test-q10', 'Which one would you choose as a pet?', '');
 
 CREATE TABLE answers (
     user_id     varchar(255) REFERENCES users (id),
