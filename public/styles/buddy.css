@@ -16,11 +16,25 @@
     width: 40px;
 }
 
+.success-message {
+    display: none;
+    font-weight: bold;
+}
+
+.Success {
+    display: inline-block;
+    color: green;
+}
+
+.Error {
+    display: inline-block;
+    color: red;
+}
+
 .image img{
     max-width: 700px;
     margin: 0 auto;
 }
-
 
 input[type="range"]{
     -webkit-appearance:none;

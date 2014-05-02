@@ -21,11 +21,13 @@ INSERT INTO questions (id, text, scale_explain)
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q5', 'How do you feel about the colour blue?', 'Blue to not blue - (Da Ba Dee Da Ba Die)');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q6', 'Silly question No. 6', 'not at all - totally');
+		VALUES ('test-q6', 'Which do you prefer?', 'Carrots, beef, or somewhere inbetween');
 INSERT INTO questions (id, text, scale_explain)
 		VALUES ('test-q7', 'Silly question No. 7', 'not at all - totally');
 INSERT INTO questions (id, text, scale_explain)
-		VALUES ('test-q8', 'Silly question No. 7', 'Love it or hate it!');
+		VALUES ('test-q8', 'How do you feel about chocolate?', 'Love it or hate it!');
+INSERT INTO questions (id, text, scale_explain)
+		VALUES ('test-q9', 'Fashion is something so ugly it has to change every 15 minutes?', 'No way, super Chic! to Hells yeah, super freak!');
 
 CREATE TABLE answers (
     user_id     varchar(255) REFERENCES users (id),

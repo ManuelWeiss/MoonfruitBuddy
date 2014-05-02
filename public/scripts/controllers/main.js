@@ -14,11 +14,6 @@ angular.module('moonBuddyApp')
               return this.invalid(); 
           }
 
-          console.log($scope.user);
-          angular.forEach($scope.questions, function(key, value) {
-              console.log(key, value);
-          });
-
           data.user_id = $scope.user.username + "@moonfruit.com";
 //          data.department = $scope.user.department;
           data.question_id = q;
@@ -34,8 +29,23 @@ angular.module('moonBuddyApp')
               headers: {'Content-Type': 'application/json'}
           }).success(function(res) {
               console.log(res);
+              console.log(q);
+
+              angular.forEach($scope.questions, function(key, value) {
+                  if (key.id === res.question_id) {
+                      key.success = 'Success';
+                  }
+              });
+
           }).error(function(res) {
               console.log(res);
+
+              angular.forEach($scope.questions, function(key, value) {
+                  if (key.id === res.question_id) {
+                      key.success = 'Error';
+                  }
+              });
+
           });
 
           return true;
@@ -45,27 +55,5 @@ angular.module('moonBuddyApp')
       $scope.invalid = function() {
           alert('you missed something');
       };
-
-      $scope.createUser = function() {
-          var data = {
-              id: $scope.user.username + "@moonfruit.com",
-              name: $scope.user.name,
-              department: $scope.user.department,
-              team: $scope.user.team
-          };
-          
-          $http({
-              url: '/users',
-              data: JSON.stringify(data),
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'}
-          }).success(function(res) {
-              console.log(res);
-          }).error(function(res) {
-              console.log(res);
-          });
-
-      };
-
 
   });

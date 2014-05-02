@@ -8,7 +8,7 @@
   <h3 class="text-muted">MoonBuddy</h3>
 </div>
 
-<h1>Matching moonfruitees</h1>
+<h1>Matching up moonfruitees</h1>
 
 <div class="marketing">
   <p>
@@ -45,6 +45,10 @@
 
       <button class="submit" 
               ng-click="submitAnswers(question.id, question.value)">Submit</button>
+
+      <p class="success-message {{ question.success }}">
+        {{ question.success }}!
+      </p>
 
       <div class="bottom-border"><!-- empty --></div>
 
