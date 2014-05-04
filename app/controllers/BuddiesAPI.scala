@@ -6,11 +6,12 @@ import play.api.libs.json.Json
 import play.api.libs.json.JsResultException
 import play.api.libs.json._
 import models.User
+import models.Buddy
 
 object BuddiesAPI extends Controller {
 
   def findBuddy(id: String) = Action {
-    Ok(User.findBuddy(id))
+    Ok(Buddy.findBuddy(id))
   }
 
   def findBuddyDummy(id: String) = Action {

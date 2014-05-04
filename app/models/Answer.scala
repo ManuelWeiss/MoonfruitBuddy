@@ -43,6 +43,19 @@ object Answer {
 	}
 
 	/**
+	 * Parse an Answer from a SQL ResultSet
+	 */
+	val parseBuddyRS = {
+		getAliased[String]("other_user_id") ~
+		getAliased[String]("question_id") ~
+		getAliased[Double]("answer1") ~
+		getAliased[Double]("answer2") map {
+			case other_user_id ~ question_id ~ answer1 ~ answer2 =>
+				(other_user_id, question_id, answer1, answer2)
+		}
+	}
+
+	/**
 	 * Get all Answers as a List.
 	 */
 	def getAll: List[Answer] = {
@@ -62,6 +75,22 @@ object Answer {
 			answersByUser(u) = answers + (q -> a)
 		}
 		answersByUser
+	}
+
+	def getBuddyAnswers(user_id: String) = {
+		DB.withConnection {
+			implicit connection =>
+				SQL("""
+				    select t2.user_id as other_user_id,
+							t1.question_id as question_id,
+							t1.answer as answer1,
+							t2.answer as answer2
+						from answers as t1 join answers as t2
+						on t1.question_id = t2.question_id
+						where t1.user_id = {user_id}
+						and t2.user_id != t1.user_id
+				    """).on('user_id -> user_id).as(parseBuddyRS *)
+		}
 	}
 
 	/**

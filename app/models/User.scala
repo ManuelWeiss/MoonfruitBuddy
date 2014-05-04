@@ -15,8 +15,7 @@ case class User(
 	id: String,
 	name: String,
 	department: String,
-	team: String //,
-	//		answers:    Answers
+	team: String
 	)
 
 object User {
@@ -39,7 +38,7 @@ object User {
 	/**
 	 * Parse a User from a SQL ResultSet
 	 */
-	val parseRS = {
+	val parseUserRS = {
 		str("users.id") ~
 			str("users.name") ~
 			str("users.department") ~
@@ -54,7 +53,7 @@ object User {
 	def getAll: List[User] = {
 		DB.withConnection {
 			implicit connection =>
-				SQL("select * from users").as(User.parseRS *)
+				SQL("select * from users").as(parseUserRS *)
 		}
 	}
 
@@ -66,27 +65,8 @@ object User {
 	def findById(id: String): Option[User] = {
 		DB.withConnection {
 			implicit connection =>
-				SQL("select * from users where id = {id}").on('id -> id).as(User.parseRS.singleOpt)
+				SQL("select * from users where id = {id}").on('id -> id).as(parseUserRS.singleOpt)
 		}
-	}
-
-	/**
-	 * Find buddies for a given user
-	 *
-	 * @param id The id of the user.
-	 */
-	def findBuddy(id: String) = {
-		val answers = Answer.getMapByUser
-		val thisUser = answers(id) // Map(q_id -> Double)
-		val otherUsers = answers.filterKeys(_ != id)
-//		var lala = Map[???]
-//		otherUsers.keys.foreach{
-//			user_id =>
-//				val otherUser = answers(id)
-//				val pairs = for (q_id <- user.keys) yield (q_id, thisUser(q_id), otherUser(q_id))
-//				lala + (user_id, pairs)
-//		}.mkString("\n")
-		otherUsers
 	}
 
 	/**
