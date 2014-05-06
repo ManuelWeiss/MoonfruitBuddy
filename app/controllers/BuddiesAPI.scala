@@ -11,17 +11,11 @@ import models.Buddy
 object BuddiesAPI extends Controller {
 
   def findBuddy(id: String) = Action {
-    Ok(Buddy.findBuddy(id))
-  }
-
-  def findBuddyDummy(id: String) = Action {
-	val rnd = scala.util.Random
-  	val usersWithDist = User.getAll.map(u => Seq(
-  			"distance" -> JsNumber(10 * rnd.nextDouble),
-  			"user"     -> Json.toJson(u)
-  			)
-  			).map(JsObject(_))
-    Ok(Json.toJson(usersWithDist))
+  	val res = for ((u, d) <- Buddy.findBuddy(id)) yield JsObject(Seq(
+  			"distance" -> JsNumber(d),
+  			"user"     -> JsString(u)
+  			))
+    Ok(Json.toJson(res))
   }
 
 }
