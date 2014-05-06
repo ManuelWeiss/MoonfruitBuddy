@@ -63,7 +63,17 @@ angular.module('moonBuddyApp')
 
       $scope.findMatch = function(id) {
           $http.get('/buddies/' + id).success(function(res) {
+
               $scope.matchingUsers = res;
+
+              angular.forEach($scope.matchingUsers, function(buddy, i) {
+                  angular.forEach($scope.existingUsers, function(existingUser, j) {
+                      if ( existingUser.id === buddy.user ) {
+                          buddy.match = existingUser;
+                      }
+                  });
+              });
+
           }).error(function(res) {
               alert('something went wrong :(');
           });
